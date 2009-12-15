@@ -1,6 +1,5 @@
-require 'pairing/cas'
+require 'pairing/match'
 require 'fastercsv'
 
-exposes = FasterCSV.read("solvants.csv")
-nexposes = FasterCSV.read("temoins.csv")
-
+exposes = FasterCSV.read("private/solvants.csv")
+nexposes = FasterCSV.read("private/temoins.csv")
