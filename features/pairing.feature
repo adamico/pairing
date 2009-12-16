@@ -7,7 +7,7 @@ Feature: pairing lines from 2 csv tables
   Scenario Outline: compare case with control
     Given a cas with values <cas>
     When I try to match a temoin with values <temoin>
-    Then I should have <match> matches
+    Then I should see "<match> matches"
     Examples: 3 matches
         | cas           | temoin        | match |
         | 2002, 38, 13  | 2002, 38, 13  | 3     |

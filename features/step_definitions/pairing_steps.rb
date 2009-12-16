@@ -1,13 +1,14 @@
 Given(/^a cas with values (.+)$/) do |values|
   @messenger = StringIO.new
   @match = Pairing::Match.new(@messenger)
-  @cas = @match.cas(values.split(','))
+  @match.cas(values.split(','))
 end
 
 When(/^I try to match a temoin with values (.+)$/) do |values|
-  @temoin = @match.temoin(values.split(', '))
+  @match.temoin(values.split(', '))
 end
 
-Then(/^I should have (\d+) matches$/) do |match|
+Then(/^I should see "([^\"]*)"$/) do |match|
+  @match.find
   @messenger.string.should include(match)
 end
