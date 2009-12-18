@@ -50,7 +50,7 @@ module Pairing
           @match.temoin(@temoin)
         end
         it "should return no match" do
-          @messenger.should_receive(:puts).with("No match.")
+          @messenger.should_receive(:puts).with("No match(es)")
           @match.find
         end
       end

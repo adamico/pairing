@@ -1,14 +1,20 @@
-Given(/^a cas with values (.+)$/) do |values|
+Given(/^a cas with (.+)$/) do |values|
   @messenger = StringIO.new
-  @match = Pairing::Match.new(@messenger)
-  @match.cas(values.split(', '))
+  @match ||= Pairing::Match.new(@messenger)
+  values = values.split(', ').collect { |v| v.to_i }
+  @match.cas(values)
 end
 
-When(/^I try to match a temoin with values (.+)$/) do |values|
-  @match.temoin(values.split(', '))
+Then(/^I should see "([^\"]*)"$/) do |message|
+  @messenger.string.split("\n").should include(message)
 end
 
-Then(/^I should see "([^\"]*)"$/) do |match|
+When(/^a temoin with (.+)$/) do |values|
+  values = values.split(', ').collect { |v| v.to_i }
+  @match.temoin(values)
+end
+
+Then(/^the result should be "([^\"]*)"$/) do |result|
   @match.find
-  @messenger.string.should include(match)
+  @messenger.string.split("\n").should include(result)
 end

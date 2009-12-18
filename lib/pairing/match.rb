@@ -27,13 +27,13 @@ module Pairing
         else
           # the second and third cas_value must be = temoin_value +/- 2
           if @temoin[index].between?(value - 2, value + 2)
-            @messenger.puts "Checking if #{@temoin[index]} is within #{value - 1} - #{value + 1} "
+            @messenger.puts "Checking if #{@temoin[index]} is within #{value - 2} - #{value + 2} "
             result += 1
           end
         end
       end
       if result == 0
-        @messenger.puts "No match."
+        @messenger.puts "No match(es)"
       else
         @messenger.puts "#{result} match(es)"
       end
