@@ -10,42 +10,47 @@ module Pairing
 
     context "finding a match" do
       context "with 3 same columns" do
-        it "should return 3 matches" do
+        before(:each) do
+          @temoin = [2002, 38, 13]
           @match.cas(@cas)
-          @match.temoin([2002, 38, 13])
-
+          @match.temoin(@temoin)
+        end
+        it "should return 3 matches" do
           @messenger.should_receive(:puts).with("3 match(es)")
-
           @match.find
         end
       end
       context "with 2 similar columns" do
-        it "should return 2 matches" do
+        before(:each) do
+          @temoin = [2002, 38, 10]
           @match.cas(@cas)
-          @match.temoin([2002, 38, 10])
-
+          @match.temoin(@temoin)
+        end
+        it "should return 2 matches" do
           @messenger.should_receive(:puts).with("2 match(es)")
-
           @match.find
         end
       end
       context "with 1 similar columns" do
-        it "should return 1 matches" do
+        before(:each) do
+          @temoin = [2002, 35, 10]
           @match.cas(@cas)
-          @match.temoin([2002, 35, 10])
-
+          @match.temoin(@temoin)
+        end
+        it "should return 1 matches" do
           @messenger.should_receive(:puts).with("1 match(es)")
 
           @match.find
         end
       end
       context "with 0 same columns" do
-        it "should return no match" do
+        before(:each) do
+          @temoin = [2000, 35, 10]
           @match.cas(@cas)
-          @match.temoin([2000, 35, 10])
-
+          @match.temoin(@temoin)
+        end
+        it "should return no match" do
           @messenger.should_receive(:puts).with("No match.")
-
           @match.find
         end
       end

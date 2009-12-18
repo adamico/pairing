@@ -6,19 +6,20 @@ module Pairing
 
     def cas(cas)
       @cas = cas
-      @messenger.puts "#{cas.join(', ')}"
+      @messenger.puts "Cas has values : #{cas.join(', ')}"
     end
 
     def temoin(temoin)
       @temoin = temoin
-      @messenger.puts "#{temoin.join(', ')}"
+      @messenger.puts "Temoin has values : #{temoin.join(', ')}"
     end
 
     def find
       result = 0
+      @cas = @cas.to_a.flatten
       @cas.each_with_index do |value, index|
-        value = value.to_i
         if index == 0
+          @messenger.puts "Checking if #{@temoin[index]} is within #{value - 1} - #{value + 1}"
           # the first cas_value must be = temoin_value +/- 1
           if @temoin[index].between?(value - 1, value + 1)
             result += 1
@@ -26,6 +27,7 @@ module Pairing
         else
           # the second and third cas_value must be = temoin_value +/- 2
           if @temoin[index].between?(value - 2, value + 2)
+            @messenger.puts "Checking if #{@temoin[index]} is within #{value - 1} - #{value + 1} "
             result += 1
           end
         end

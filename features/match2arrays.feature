@@ -1,7 +1,7 @@
-Feature: pairing lines from 2 csv tables
+Feature: compare 2 arrays by 3 columns
   In order to match controls for my cases
   As myself
-  I want this script to match lines from 2 csv files
+  I want this script to match 2 arrays
   By 3 columns: pregnancy age, patient age, call date
 
   Scenario Outline: compare case with control
